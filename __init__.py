@@ -1,5 +1,5 @@
 """
-MiniSpider
+Spider
 ----------
 
 A lightweight multithreaded web crawler and search indexer in pure Python.
@@ -18,17 +18,25 @@ Modules:
 
 __version__ = "0.1.0"
 __author__ = "A.Rahman Dayo"
-__progress__ = "20%"
 
-# High-level imports (so users can access without diving into submodules)
+
+# Import the Crawler class from crawler.py so users can access it directly
 from .crawler import Crawler
-from .parser import parse_html
-from .indexer import InvertedIndex
-from .signals import extract_sales_signals
 
-__all__ = [
-    "Crawler",
-    "parse_html",
-    "InvertedIndex",
-    "extract_sales_signals",
-]
+# Import the fetch_url function from fetcher.py for direct URL fetching
+from .fetcher import fetch_url
+
+# Import the parse_html function from parser.py for HTML parsing
+from .parser import parse_html
+
+# Import the Indexer class (or functions) from indexer.py for search indexing
+from .indexer import Indexer
+
+# Import the signals module, which extracts sales/lead signals
+from . import signals
+
+# Import the store module, which handles saving results to JSON/CSV
+from . import store
+
+# Define the list of items that are exposed when "from mini_spider import *" is used
+__all__ = ["Crawler", "fetch_url", "parse_html", "Indexer", "signals", "store"]
